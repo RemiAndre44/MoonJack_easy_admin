@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- Header -->
+    <header class="masthead d-flex">
+        <div class="container text-center my-auto">
+            <h1 class="mb-1">MoonJack</h1>
+            <h3 class="mb-5">
+                <em>Fue - Santi - Dj Bobycut</em>
+            </h3>
+            <a class="btn btn-outline-light btn-xl js-scroll-trigger" href="#about">Listen !</a>
+        </div>
+        <div class="overlay"></div>
+    </header>
+
+    <!-- Video youtube -->
+    <div style="background: #212121">
+        <section class="content-section" id="about">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <iframe width="100%" height="400"
+                                src="https://www.youtube.com/embed/pdLupGhPCi0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Liens soundcloud -->
+    <section class="content-section bg-primary text-white text-center" id="services">
+        <div class="container" id="soundcloud">
+            <div class="content-section-heading">
+                <h3 class="text-secondary mb-0">Suivez nous</h3>
+                <h2 class="mb-5">Souncloud</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <span id="imgIcon" class="service-icon rounded-circle mx-auto mb-3" >
+                    <a href="https://soundcloud.com/fu-hiphop" target="_blank">
+                        <img src="../../img/fue.jpg" class="hvr-pop">
+                    </a>
+                </span>
+                    <h4>
+                        <strong>Fue</strong>
+                    </h4>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                <span id="imgIcon" class="rounded-circle mx-auto mb-3">
+                  <a href="https://www.youtube.com/channel/UC8cB1v8N-UYPmk78Qab4QJg" target="_blank">
+                        <img src="../../img/hqdefault.jpg" class="hvr-pop">
+                    </a>
+                </span>
+                    <h4>
+                        <strong>Dj Bobycut</strong>
+                    </h4>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-5 mb-md-0">
+                <span class="service-icon rounded-circle mx-auto mb-3" id="imgIcon">
+                    <a href="https://soundcloud.com/santino-langue-morte" >
+                        <img src="../../img/santi.jpg" target="_blank" class="hvr-pop">
+                    </a>
+                </span>
+                    <h4>
+                        <strong>Santi</strong>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Téléchargement disco -->
+    <section class="callout">
+        <div class="container text-center">
+            <h2 class="mx-auto mb-5">
+                
+            </h2>
+            <a class="btn btn-outline-light btn-xl" href="moonjack.zip" download="" id="btnSurImg">Téléchargez la discographie complète</a>
+        </div>
+    </section>
+
+    <!-- Liens bandcamp -->
+    <section class="content-section" id="portfolio"  style="background: #212121">
+        <div class="container">
+            <div class="content-section-heading text-center">
+                <h3 class="text-secondary mb-0">Retrouvez nos</h3>
+                <h2 class="mb-5" style="color: white">Projets</h2>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-lg-6">
+                    <div class="view overlay">
+                        <a target="_blank" class="portfolio-item zoom " href="https://ludz.bandcamp.com/album/ici-et-ailleurs-2">
+                            <img class="img-fluid " src="img/iciouailleurs.jpg" >
+                            <div class="mask flex-center waves-effect waves-light rgba-stylish-strong">
+                                <p class="white-text" style="padding:5vh;">"Ici et ailleurs" est le premier EP commun de Fué et Ludz (Beatmaker).
+                                    Ce projet est la retranscription de deux ans de vie du rappeur loin de beaucoup de ses proches. Des questions et des certitudes portées par les productions Jazz/Smooth/Minimalistes de Ludz.
+                                    On peut résumer ce EP à un voyage spirituel et géographique sortant des standards du rap, sur fond de vieux vinyl qui craque.
+                                    Laissez-vous embarquer.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="view overlay">
+                        <a target="_blank" class="portfolio-item zoom .rgba-blue-light" href="https://santinolanguemorte.bandcamp.com/album/mon-stylo-fait-grise-mine-t-l-chargement-libre" id="jaquetteHover">
+                            <img class="img-fluid" src="img/stylo.jpg">
+                            <div class="mask flex-center waves-effect waves-light rgba-stylish-strong">
+                                <p class="white-text" style="padding:5vh;">"Mon stylo fait grise mine" est un projet mené par Santi qui a pour but de promouvoir les rappeurs de Vannes et ses alentours.
+                                    18 titres aux influences Jazz, aux themes divers et variés, qui mettent en avant les collaborations au service de la musique.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    {% if (app.user) %}
+        <section class="content-section bg-primary text-white">
+            <div class="container text-center">
+                <h2 class="mb-4">Votre avis nous intéresse {{ app.user.username }}</h2>
+                <a href="/commentaires" class="btn btn-outline-light btn-xl js-scroll-trigger">Laisser un message</a>
+            </div>
+        </section>
+    {% else %}
+        <section class="content-section bg-primary text-white">
+            <div class="container text-center">
+                <h2 class="mb-4">Connectez vous pour nous laisser vos avis</h2>
+                <a href="/connection" class="btn btn-outline-light btn-xl js-scroll-trigger">Se connecter</a>
+                <a href="/inscription" class="btn btn-outline-light btn-xl js-scroll-trigger">S'inscrire</a>
+            </div>
+        </section>
+    {% endif %}
+
+{% endblock %}
+

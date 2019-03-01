@@ -1,0 +1,36 @@
+easy_admin:
+    entities:
+        Article:
+            # ...
+            label: 'article'
+            list:
+                actions:
+                    - {name: 'delete', label: 'del' }
+                    - {name: 'edit' , lable: 'edite'}
+                title: 'article'
+                fields:
+                    - id
+                    - title
+                    - createdAt
+                    - commentaires
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+            form:
+                fields:
+                    - title
+                    - content
+                    - createdAt
+                    - category
+                    - link
+                    - { property: 'imageFile', type: 'vich_file' }
+            class: App\Entity\Article
+            # ...
+        Category:
+            class: App\Entity\Category
+        User:
+            class: App\Entity\User
+        Commentaire:
+            class: App\Entity\Commentaire
+

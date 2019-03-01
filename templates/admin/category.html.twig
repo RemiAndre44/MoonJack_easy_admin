@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="row justify-content-center">
+        <div class="col-6" id="formLogin">
+
+            <h2 style="text-align: center">Créer une nouvelle catégorie</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-8" style="margin-top: 5vh;margin-bottom: 5vh">
+
+                    {{ form_start(form) }}
+
+                    {{ form_row(form.title,{"attr":{"placeholder": "Titre" }}) }}
+
+                    {{ form_row(form.description,{"attr":{"placeholder": "Contenu" }}) }}
+
+                    <div style="text-align: center">
+                        <button type="submit" class="btn btn-success">Envoyer</button>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

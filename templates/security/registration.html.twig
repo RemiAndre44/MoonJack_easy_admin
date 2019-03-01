@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="row justify-content-center" >
+        <div class="col-8"  id="formLogin">
+            <h1 style="text-align: center;">Inscription</h1>
+
+            <div class="row justify-content-center">
+                <div class="col-8"  style="margin-top: 5vh;margin-bottom: 5vh">
+                    {{ form_start(form) }}
+
+                    {{ form_widget(form) }}
+
+                    <div class="form-group" style="text-align: center; margin-top: 10vh">
+                        <button type="submit" class="btn btn-success">Inscription</button>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

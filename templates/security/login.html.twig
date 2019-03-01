@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+
+    <div class="row justify-content-center">
+        <div class="col-6" id="formLogin" >
+            <h2 style="text-align: center;margin: 5vh">Connectez vous</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-8" style="margin-top: 5vh;margin-bottom: 5vh">
+                    <form  action="{{ path('security_login') }}" method="post">
+                        <div class="form-group">
+                            <input type="text" placeholder="Adresse mail" required name="_username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Mot de passe" required name="_password" class="form-control">
+                        </div>
+                        <div class="form-group" id="loginBtn">
+                            <button type="submit" class="btn btn-success" >Connexion</button>
+                        </div>
+                    </form>
+                    <div id="pwdForget">
+                        <a href="{{ path('init') }}">Mot de passe oublié</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center" style="padding-bottom: 10vh">
+        <div class="col-4">
+            {% if(error is defined) %}
+                <div class="alert alert-warning" role="alert">
+                    <div style="text-align: center">{{ error }}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+{% endblock  %}
