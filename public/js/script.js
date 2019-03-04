@@ -36,13 +36,3 @@ function like(i){
         like.color = "green";
     }
 }
-
-function showComment(){
-    console.log("yo");
-    var comments = document.getElementById('comments').style;
-    if(comments.visibility == "hidden"){
-        comments.visibility = "visible"
-    }else{
-        comments.visibility = "hidden"
-    }
-}

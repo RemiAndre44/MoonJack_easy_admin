@@ -11,79 +11,103 @@
         <div class="overlay"></div>
     </header>
 
-    <div id="carouselActu">
-        <!--Carousel Wrapper-->
-        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel" >
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-            </ol>
-            <!--/.Indicators-->
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox" >
-                <!--First slide-->
-                {% set i=0 %}
-                {% for article in articles %}
-                    <div class="carousel-item {% if i == 0 %} active {% endif %}">
-                        <!-- Card -->
-                        <div class="card" style="margin: 0;padding: 0">
+    <div class="row justify-content-center" style="background: rgb(44, 62, 80);">
+        <div class="col-12 col-sm-11 col-lg-8">
+            <div id="carouselActu">
+                <!--Carousel Wrapper-->
+                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel" >
+                    <!--Indicators-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                    </ol>
+                    <!--/.Indicators-->
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox" >
+                        <!--First slide-->
+                        {% set i=0 %}
+                        {% for article in articles %}
+                            <div class="carousel-item {% if i == 0 %} active {% endif %}">
+                                <!-- Card -->
+                                <div class="card" style="margin: 0;padding: 0">
 
-                            <!-- Card image -->
-                            <div class="view overlay">
-                                <img class="card-img-top" src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="Card image cap">
-                                <a href="#!">
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-
-                            <!-- Card content -->
-                            <div class="card-body" id="carouselActu">
-
-                                <!-- Title -->
-                                <h4 class="card-title">{{ article.title }}</h4>
-                                <!-- Text -->
-                                <p class="card-text">{{ article.content }}</p>
-
-                                {% if article.commentaires %}
-                                    <i class="far fa-comment-alt"></i>{{ article.commentaires|length }}
-                                    <button type="button" class="btn btn-light-blue" onclick="showComment()" style="margin-left: 20rem">Light blue</button>
-                                    <div id="comments" style="visibility: hidden">
-                                        <ul>
-                                            {% for commentaire in article.commentaires %}
-                                                <li>{{ commentaire.contenu }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                {% endif %}
-                                    <!-- Button -->
-                                    <div style="text-align: center; margin: 2rem">
-                                        <a href="{{ article.link }}" target="_blank" type="button" class="btn btn-outline-default waves-effect">Default</a>
+                                    <!-- Card image -->
+                                    <div class="view overlay">
+                                        <img class="card-img-top" src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="Card image cap">
+                                        <a href="#!">
+                                            <div class="mask rgba-white-slight"></div>
+                                        </a>
                                     </div>
 
-                            </div>
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <!-- Title -->
+                                        <h4 class="card-title" style="text-align: center">{{ article.title }}</h4>
+                                        <!-- Text -->
+                                        <p class="card-text">{{ article.content | raw }}</p>
 
-                        </div>
-                        {% set i = i+1 %}
-                        <!-- Card -->
+                                        {% if article.commentaires %}
+                                            <div class="row justify-content-center">
+                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+                                                    <i class="far fa-comment-alt"></i>{{ article.commentaires|length }}
+                                                </button>
+                                            </div>
+                                            <div class="collapse" id="collapseComment">
+                                                <div class="mt-3">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-8">
+                                                            <div class="row justify-content-center">
+                                                                {% for commentaire in article.commentaires %}
+                                                                    <div class="col-10">
+                                                                        De: {{ commentaire.auteur }} le {{ commentaire.dateCreation|date('Y-m-d')  }}
+                                                                        <div id="commentStyle">{{ commentaire.contenu }}</div>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-8">
+                                                                    {% if(app.user) %}
+                                                                        {{ form_start(form) }}
+                                                                            {{ form_row(form.contenu,{"attr":{"placeholder": "Commenter" }}) }}
+                                                                            <input type="hidden" name="article" value="{{ article.id }}"/>
+                                                                            <button type="submit" class="btn btn-success">Poster</button>
+                                                                        {{ form_end(form) }}
+                                                                    {% else %}
+                                                                        <p style="margin-top: 7vh;text-align: center">Vous ne pouvez pas commenter cet article si vous n'êtes pas connecté</p>
+                                                                        <div  style="text-align: center">
+                                                                            <a href="{{ path('security_login') }}">Vous connecter</a>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% set i = i+1 %}
+                                <!-- Card -->
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
+                    <!--/.Slides-->
+                    <!--Controls-->
+                    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <!--/.Controls-->
+                </div>
+                <!--/.Carousel Wrapper-->
             </div>
-            <!--/.Slides-->
-            <!--Controls-->
-            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--/.Controls-->
         </div>
-        <!--/.Carousel Wrapper-->
     </div>
-
 
 {% endblock %}

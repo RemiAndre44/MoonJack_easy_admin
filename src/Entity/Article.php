@@ -29,7 +29,7 @@ class Article
     /**
      * @ORM\Column(type="text")
      * /**
-     * @Assert\Length(min = 10,max = 255)
+     * @Assert\Length(min = 10)
      */
     private $content;
 
@@ -54,10 +54,6 @@ class Article
      */
     private $category;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $link;
 
     public function getId(): ?int
     {
@@ -118,18 +114,6 @@ class Article
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(?string $link): self
-    {
-        $this->link = $link;
 
         return $this;
     }

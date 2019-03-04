@@ -218,6 +218,7 @@
 
 #carouselActu{
     background: rgb(44, 62, 80);
+    margin: 5rem 0;
 }
 
 #carouselActu .card{
@@ -245,4 +246,13 @@
 #btnHoverNoir{
     margin-top: 2rem;
 
+}
+
+#commentStyle{
+    border: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    background: #f1f5f4;
 }

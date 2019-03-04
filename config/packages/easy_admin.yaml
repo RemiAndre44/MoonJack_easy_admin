@@ -28,7 +28,6 @@ easy_admin:
                     - content
                     - createdAt
                     - category
-                    - link
                     - { property: 'imageFile', type: 'vich_file' }
             class: App\Entity\Article
             # ...

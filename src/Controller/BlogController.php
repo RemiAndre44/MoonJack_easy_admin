@@ -28,56 +28,38 @@ class BlogController extends AbstractController
 {
 
     /**
-     * @param CommentaireRepository $repo
-     * @param Request $request
-     * @param ObjectManager $manager
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Exception
-     * @Route("/commentaires", name="commentaires")
-     */
-    public function avis(CommentaireRepository $repo, Request $request, ObjectManager $manager)
-    {
-
-        $commentaires = $repo->findAll();
-
-        $commentaire = new Commentaire();
-
-        $form = $this->createForm(CommentaireFormType::class, $commentaire);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $commentaire->setDateCreation(new \DateTime());
-            $user = $this->getUser();
-            $commentaire->setAuteur($user->getUserName());
-
-            $manager->persist($commentaire);
-
-            $manager->flush();
-
-            return $this->redirectToRoute('commentaires');
-        }
-
-        return $this->render('blog/comment.html.twig', [
-            'commentaires' => $commentaires,
-            'commentaireForm' => $form->createView()
-        ]);
-    }
-
-    /**
      * @param ArticleRepository $repo
      * @param Request $request
      * @param ObjectManager $manager
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      * @Route("/actus", name="actus")
      */
     public function actus(ArticleRepository $repo, Request $request, ObjectManager $manager)
     {
+        $commentaire = new Commentaire();
+
+        $form = $this->createForm(CommentaireFormType::class, $commentaire);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $commentaire->setDateCreation(new \DateTime());
+            $commentaire->setCompteur(0);
+            $user = $this->getUser();
+            $articleId = $request->get("article");
+            $article = $repo->find($articleId);
+            echo $article;
+            $commentaire->setArticle($article);
+            $commentaire->setAuteur($user->getUserName());
+            $manager->persist($commentaire);
+            $manager->flush();
+        }
 
         $articles = $repo->findAll();
 
         return $this->render('blog/actus.html.twig', [
             'articles' => $articles,
+            'form' => $form->createView()
         ]);
 
     }
