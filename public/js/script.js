@@ -2,8 +2,6 @@
  * Created by SantiKush on 27/12/2018.
  */
 
-require('mdbootstrap');
-
 function imgHoverFue(){
     var jaquette = document.getElementById("iVisibilityFue");
     if (jaquette.style.visibility === "hidden"){
@@ -36,5 +34,15 @@ function like(i){
         like.color = "black";
     }else {
         like.color = "green";
+    }
+}
+
+function showComment(){
+    console.log("yo");
+    var comments = document.getElementById('comments').style;
+    if(comments.visibility == "hidden"){
+        comments.visibility = "visible"
+    }else{
+        comments.visibility = "hidden"
     }
 }
