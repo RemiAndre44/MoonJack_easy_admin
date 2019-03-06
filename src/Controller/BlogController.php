@@ -19,13 +19,27 @@ use Symfony\Component\Routing\Annotation\Route;
 use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
 require __DIR__.'/../../vendor/PHPMailer/PHPMailer/src/SMTP.php';
 require __DIR__.'/../../vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
 require __DIR__.'/../../vendor/PHPMailer/PHPMailer/src/OAuth.php';
 
 class BlogController extends AbstractController
 {
+
+    /**
+     * @Route("/articles", name="create_article")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function articles(Request $request){
+
+        /*$data = $request->getContent();
+        $article = $this->get('serilizer')->deserialize($data, 'App\Entity\Article', 'json');
+
+        dump($article);
+        die();*/
+
+        return $this->render('blog/init.html.twig');
+    }
 
     /**
      * @param ArticleRepository $repo
