@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "easycorp/easyadmin-bundle": "^2.1",
+        "jms/serializer-bundle": "^2.4",
         "phpmailer/phpmailer": "^6.0",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "*",

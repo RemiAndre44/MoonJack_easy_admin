@@ -15,6 +15,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use \Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -25,21 +26,6 @@ require __DIR__.'/../../vendor/PHPMailer/PHPMailer/src/OAuth.php';
 
 class BlogController extends AbstractController
 {
-
-    /**
-     * @Route("/articles", name="create_article")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function articles(Request $request){
-
-        /*$data = $request->getContent();
-        $article = $this->get('serilizer')->deserialize($data, 'App\Entity\Article', 'json');
-
-        dump($article);
-        die();*/
-
-        return $this->render('blog/init.html.twig');
-    }
 
     /**
      * @param ArticleRepository $repo
@@ -62,7 +48,6 @@ class BlogController extends AbstractController
             $user = $this->getUser();
             $articleId = $request->get("article");
             $article = $repo->find($articleId);
-            echo $article;
             $commentaire->setArticle($article);
             $commentaire->setAuteur($user->getUserName());
             $manager->persist($commentaire);

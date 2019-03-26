@@ -113,6 +113,21 @@
     "jms/metadata": {
         "version": "1.7.0"
     },
+    "jms/parser-lib": {
+        "version": "1.0.0"
+    },
+    "jms/serializer": {
+        "version": "1.13.0"
+    },
+    "jms/serializer-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "fe60ce509ef04a3f40da96e3979bc8d9b13b2372"
+        }
+    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
@@ -125,6 +140,9 @@
     "pagerfanta/pagerfanta": {
         "version": "v2.0.1"
     },
+    "phpcollection/phpcollection": {
+        "version": "0.5.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -136,6 +154,9 @@
     },
     "phpmailer/phpmailer": {
         "version": "v6.0.7"
+    },
+    "phpoption/phpoption": {
+        "version": "1.5.0"
     },
     "psr/cache": {
         "version": "1.0.1"
