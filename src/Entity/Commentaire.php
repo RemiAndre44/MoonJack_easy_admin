@@ -37,7 +37,7 @@ class Commentaire
     private $compteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="commentaire")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="commentaires")
      */
     private $article;
 

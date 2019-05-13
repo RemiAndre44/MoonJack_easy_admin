@@ -45,7 +45,7 @@
                 </li>
                 {% if(app.user) %}
                     <li class="sidebar-nav-item">
-                        <a class="js-scroll-trigger" href="{{ path('security_logout') }}" >Déonnection</a>
+                        <a class="js-scroll-trigger" href="{{ path('security_logout') }}" >Déconnection</a>
                     </li>
                 {% else %}
                     <li class="sidebar-nav-item">
@@ -58,18 +58,7 @@
                 <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="/actus">Actualités</a>
                 </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="/#services">Soundclouds</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="/#portfolio">Projets</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="/#contact">Contact</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="/commentaires">Commenter</a>
-                </li>
+
                 {% if(app.user) %}
                     {% if(app.user.profil == 1) %}
                         <br>

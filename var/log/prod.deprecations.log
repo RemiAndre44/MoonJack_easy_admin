@@ -1,0 +1,1 @@
+[2019-03-27 15:36:43] php.INFO: User Deprecated: Doctrine\Common\ClassLoader is deprecated. {"exception":"[object] (ErrorException(code: 0): User Deprecated: Doctrine\\Common\\ClassLoader is deprecated. at C:\\wamp64\\www\\MoonJack_easy_admin\\vendor\\doctrine\\common\\lib\\Doctrine\\Common\\ClassLoader.php:7)"} []

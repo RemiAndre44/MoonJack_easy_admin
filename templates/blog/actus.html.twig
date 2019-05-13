@@ -48,7 +48,7 @@
                                         <p class="card-text">{{ article.content | raw }}</p>
 
                                         {% if article.commentaires %}
-                                            <div class="row justify-content-center">
+                                            <div class="row justify-content-center" style="margin-bottom: 5vh">
                                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
                                                     <i class="far fa-comment-alt"></i>{{ article.commentaires|length }}
                                                 </button>
@@ -71,7 +71,9 @@
                                                                         {{ form_start(form) }}
                                                                             {{ form_row(form.contenu,{"attr":{"placeholder": "Commenter" }}) }}
                                                                             <input type="hidden" name="article" value="{{ article.id }}"/>
-                                                                            <button type="submit" class="btn btn-success">Poster</button>
+                                                                            <div style="text-align: center;margin-bottom: 5vh;" >
+                                                                                <button type="submit" class="btn btn-success">Poster</button>
+                                                                            </div>
                                                                         {{ form_end(form) }}
                                                                     {% else %}
                                                                         <p style="margin-top: 7vh;text-align: center">Vous ne pouvez pas commenter cet article si vous n'êtes pas connecté</p>
